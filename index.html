@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYLO - Your Loyal AI Assistant | Coming Soon</title>
+    <meta name="description" content="LYLO - Your loyal AI assistant that protects you from scams, explains confusing documents, and remembers your conversations. Coming soon.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --bg: #000000;
+            --card: #111111;
+            --accent: #f59e0b;
+            --accent-hover: #d97706;
+            --text: #ffffff;
+            --muted: #888888;
+            --border: #222222;
+            --success: #22c55e;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+        .nav-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+        .nav-logo span {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+        .nav-badge {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            background: radial-gradient(ellipse at top, #1a1a1a 0%, #000 70%);
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 700px;
+        }
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            margin-bottom: 32px;
+            box-shadow: 0 0 60px rgba(245, 158, 11, 0.3);
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(36px, 7vw, 56px);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tagline {
+            font-size: 20px;
+            color: var(--accent);
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .hero p {
+            font-size: 18px;
+            color: var(--muted);
+            margin-bottom: 40px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Email Signup */
+        .signup-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 450px;
+            margin: 0 auto 40px;
+        }
+        .signup-box h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .signup-box p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .signup-form {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .signup-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            outline: none;
+        }
+        .signup-form input:focus {
+            border-color: var(--accent);
+        }
+        .signup-form button {
+            padding: 14px 28px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
+            color: #000;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .signup-form button:hover {
+            transform: translateY(-2px);
+        }
+        .signup-note {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 12px;
+        }
+        
+        /* Beta Access */
+        .beta-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .beta-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Features Preview */
+        .features {
+            padding: 80px 24px;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+        }
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .section-header p {
+            color: var(--muted);
+        }
+        .features-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Pricing Preview */
+        .pricing {
+            padding: 80px 24px;
+        }
+        .pricing-preview {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .price-cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .price-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 36px;
+            min-width: 180px;
+        }
+        .price-card.featured {
+            border-color: var(--accent);
+            position: relative;
+        }
+        .price-card.featured::before {
+            content: 'Popular';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .price-card h4 {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .price-card .price {
+            font-size: 32px;
+            font-weight: 700;
+        }
+        .price-card .price span {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 400;
+        }
+        .price-card .annual {
+            font-size: 12px;
+            color: var(--success);
+            margin-top: 4px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 24px;
+            background: var(--card);
+            border-top: 1px solid var(--border);
+        }
+        .about-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .about-content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+        .about-content .mission {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 32px;
+            font-style: italic;
+            color: var(--accent);
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .footer-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+        .footer-logo span {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .footer p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+        .footer-links {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Scholarship Section */
+        .scholarship {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, var(--bg) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border-top: 1px solid var(--border);
+        }
+        .scholarship-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .scholarship-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        .scholarship h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .scholarship-tagline {
+            color: var(--accent);
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        .scholarship-content > p {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        .scholarship-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: left;
+        }
+        .scholarship-box h3 {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 20px;
+        }
+        .scholarship-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .scholarship-form input,
+        .scholarship-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            resize: vertical;
+        }
+        .scholarship-form input:focus,
+        .scholarship-form textarea:focus {
+            border-color: #a855f7;
+        }
+        .scholarship-form textarea {
+            min-height: 120px;
+        }
+        .scholarship-form button {
+            padding: 16px 28px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .scholarship-form button:hover {
+            transform: translateY(-2px);
+        }
+        .scholarship-note {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .scholarship-note p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 16px;
+            border-radius: 10px;
+            margin-top: 16px;
+        }
+        
+        /* Mobile */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            .signup-form {
+                flex-direction: column;
+            }
+            .signup-form input, .signup-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg" alt="LYLO">
+                <span>LYLO</span>
+            </a>
+            <div class="nav-badge">🚀 Coming Soon</div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg" alt="LYLO" class="hero-logo">
+            
+            <div class="hero-badge">🚀 Launching Soon</div>
+            
+            <h1>Meet <span class="highlight">LYLO</span></h1>
+            <div class="tagline">Your Loyal AI Assistant</div>
+            <p>Helping everyone stay safe, connected, and smart. LYLO protects you from scams, explains confusing documents, and remembers your conversations.</p>
+            
+            <!-- Email Signup -->
+            <div class="signup-box">
+                <h3>Get Early Access</h3>
+                <p>Be the first to know when we launch. No spam, just updates.</p>
+                <form class="signup-form" id="waitlistForm" action="https://formspree.io/f/mvzaobwn" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required id="emailInput">
+                    <button type="submit">Join Waitlist</button>
+                </form>
+                <div class="signup-note">🔒 We respect your privacy. Unsubscribe anytime.</div>
+                <div class="success-message" id="successMessage">
+                    ✅ You're on the list! We'll notify you when LYLO launches.
+                </div>
+            </div>
+            
+            <!-- Beta Testers Link -->
+            <a href="https://collective-synergy-squad.onrender.com/login" class="beta-link">
+                Already a beta tester? Sign in here →
+            </a>
+        </div>
+    </section>
+    
+    <!-- Features Preview -->
+    <section class="features">
+        <div class="section-header">
+            <h2>What LYLO Can Do</h2>
+            <p>Simple, powerful features designed for everyone</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3>Scam Protection</h3>
+                <p>Paste any suspicious message and LYLO tells you if it's a scam. Protects against fraud, phishing, and tricks.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🤝</div>
+                <h3>Document Helper</h3>
+                <p>Confused by bills or forms? LYLO explains everything in simple words you can understand.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Remembers You</h3>
+                <p>LYLO learns your preferences and remembers past conversations. It gets smarter the more you use it.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎤</div>
+                <h3>Voice Chat</h3>
+                <p>Don't like typing? Just talk! LYLO listens and responds naturally, like a helpful friend.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📷</div>
+                <h3>Photo Reading</h3>
+                <p>Take a photo of any document or label. LYLO reads it and explains what it means.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Private</h3>
+                <p>Your conversations are completely private. We can't read them, and your data is never sold.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Preview -->
+    <section class="pricing">
+        <div class="pricing-preview">
+            <div class="section-header">
+                <h2>Simple Pricing</h2>
+                <p>Start free, upgrade when you need more</p>
+            </div>
+            <div class="price-cards">
+                <div class="price-card">
+                    <h4>Free</h4>
+                    <div class="price">$0</div>
+                </div>
+                <div class="price-card featured">
+                    <h4>Pro</h4>
+                    <div class="price">$6.99<span>/mo</span></div>
+                    <div class="annual">or $59/year</div>
+                </div>
+                <div class="price-card">
+                    <h4>Elite</h4>
+                    <div class="price">$12.99<span>/mo</span></div>
+                    <div class="annual">or $99/year</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Scholarship Program -->
+    <section class="scholarship">
+        <div class="scholarship-content">
+            <div class="scholarship-icon">🎓</div>
+            <h2>LYLO Scholarship Program</h2>
+            <p class="scholarship-tagline">Can't afford LYLO? We've got you.</p>
+            <p>We believe everyone deserves to stay safe and connected, regardless of their financial situation. If you're facing hardship and can't afford a subscription, tell us your story. We manually review every application and grant free Pro access to those who truly need it.</p>
+            
+            <div class="scholarship-box">
+                <h3>Apply for Free Access</h3>
+                <form class="scholarship-form" id="scholarshipForm" action="https://formspree.io/f/xlgbeoaa" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required id="scholarName">
+                    <input type="email" name="email" placeholder="Your Email" required id="scholarEmail">
+                    <textarea name="reason" placeholder="Tell us why you need LYLO and why you can't afford it. Be honest - we read every application personally." required id="scholarReason" rows="5"></textarea>
+                    <button type="submit">Submit Application</button>
+                </form>
+                <div class="scholarship-note">
+                    <p>🤝 All applications are reviewed personally by our team</p>
+                    <p>🔒 Your story stays private and confidential</p>
+                    <p>⏱️ We typically respond within 48 hours</p>
+                </div>
+                <div class="success-message" id="scholarshipSuccess">
+                    ✅ Application received! We'll review your story and get back to you within 48 hours.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <h2>Why We Built LYLO</h2>
+            <p>We saw too many people getting scammed, confused by complicated documents, and frustrated by technology that wasn't designed for them.</p>
+            <p>LYLO is different. It's simple, honest, and actually helpful. No confusing menus, no tech jargon, no tricks. Just a loyal assistant that's always on your side.</p>
+            <div class="mission">
+                "Helping everyone stay safe, connected, and smart."
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg" alt="LYLO">
+            <span>LYLO</span>
+        </div>
+        <p>Your Loyal AI Assistant</p>
+        <div class="footer-links">
+            <a href="mailto:hello@lylo.ai">Contact</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+        <p style="margin-top: 24px;">© 2026 LYLO. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Optional: Show success message after form submit
+        // Formspree will handle the actual submission and redirect
+        // If you want to stay on page, you can use AJAX instead
+        
+        // Check if redirected back with success
+        if (window.location.search.includes('submitted=true')) {
+            // Show appropriate success message based on which form
+            var successMsgs = document.querySelectorAll('.success-message');
+            successMsgs.forEach(function(msg) {
+                msg.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
