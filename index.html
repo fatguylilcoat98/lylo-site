@@ -224,28 +224,116 @@
             max-width: 900px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
         }
-        .feature-card {
+        
+        /* Dropdown Styling */
+        details.feature-card {
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 28px;
-            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        details.feature-card[open] {
+            border-color: var(--accent);
+            background: #1a1a1a;
+        }
+        summary {
+            list-style: none; /* Hide default arrow */
+            outline: none;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        .feature-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .expand-icon {
+            font-size: 24px;
+            color: var(--accent);
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        details[open] .expand-icon {
+            transform: rotate(45deg);
         }
         .feature-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
+            font-size: 32px;
         }
         .feature-card h3 {
             font-size: 18px;
-            margin-bottom: 8px;
+            margin: 0;
         }
-        .feature-card p {
+        summary p {
             color: var(--muted);
             font-size: 14px;
-            line-height: 1.6;
+            margin-top: 8px;
+            text-align: center;
+        }
+        .feature-details {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: left;
+            animation: fadeIn 0.3s ease;
+        }
+        .feature-details h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .feature-details p {
+            color: var(--text);
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        .step {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: var(--text);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Privacy & Data Section */
+        .privacy-section {
+            padding: 80px 24px;
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+        .privacy-grid {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+        .privacy-item h3 {
+            color: var(--text);
+            font-size: 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .privacy-item p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
         }
         
         /* Pricing Preview */
@@ -338,11 +426,28 @@
             color: var(--accent);
         }
         
-        /* Footer */
+        /* Footer & Legal */
         .footer {
-            padding: 40px 24px;
+            padding: 60px 24px 40px;
             border-top: 1px solid var(--border);
             text-align: center;
+            background: #0a0a0a;
+        }
+        .legal-disclaimer {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            text-align: left;
+        }
+        .legal-disclaimer strong {
+            color: #999;
+            display: block;
+            margin-bottom: 8px;
         }
         .footer-logo {
             display: flex;
@@ -497,7 +602,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-inner">
             <a href="#" class="nav-logo">
@@ -508,7 +612,6 @@
         </div>
     </nav>
     
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <img src="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg" alt="LYLO" class="hero-logo">
@@ -519,7 +622,6 @@
             <div class="tagline">Your Loyal AI Assistant</div>
             <p>Helping everyone stay safe, connected, and smart. LYLO protects you from scams, explains confusing documents, and remembers your conversations.</p>
             
-            <!-- Email Signup -->
             <div class="signup-box">
                 <h3>Get Early Access</h3>
                 <p>Be the first to know when we launch. No spam, just updates.</p>
@@ -533,54 +635,148 @@
                 </div>
             </div>
             
-            <!-- Beta Testers Link -->
             <a href="https://collective-synergy-squad.onrender.com/login" class="beta-link">
                 Already a beta tester? Sign in here →
             </a>
         </div>
     </section>
     
-    <!-- Features Preview -->
     <section class="features">
         <div class="section-header">
-            <h2>What LYLO Can Do</h2>
-            <p>Simple, powerful features designed for everyone</p>
+            <h2>Active Protocols</h2>
+            <p>Tap a feature below to learn how to activate it.</p>
         </div>
         <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Scam Protection</h3>
-                <p>Paste any suspicious message and LYLO tells you if it's a scam. Protects against fraud, phishing, and tricks.</p>
+            
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Guardian Protocol</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Detects scams in texts and emails instantly.</p>
+                </summary>
+                <div class="feature-details">
+                    <h4>How it works:</h4>
+                    <p>Copy any suspicious message and paste it into the chat. Ask "Is this a scam?" LYLO will analyze the language, links, and sender to warn you of danger.</p>
+                    <div class="step">
+                        <strong>Try saying:</strong> "Check this text message for me."
+                    </div>
+                </div>
+            </details>
+
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">🍯</div>
+                        <h3>Honeybot Protocol</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Wastes scammers' time so they leave you alone.</p>
+                </summary>
+                <div class="feature-details">
+                    <h4>How it works:</h4>
+                    <p>If a scam is detected, LYLO can generate a "Honeybot Reply." This reply is designed to be confusing and time-wasting, frustrating the scammer into giving up.</p>
+                    <div class="step">
+                        <strong>Try saying:</strong> "Generate a Honeybot reply for this scam."
+                    </div>
+                </div>
+            </details>
+
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">⚖️</div>
+                        <h3>Advocate Protocol</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Handles difficult negotiations and formal letters.</p>
+                </summary>
+                <div class="feature-details">
+                    <h4>How it works:</h4>
+                    <p>Need to lower a bill or file a complaint? LYLO writes professional, firm letters for you. Just tell it the situation, and it drafts the perfect response.</p>
+                    <div class="step">
+                        <strong>Try saying:</strong> "Write a letter to negotiate my cable bill."
+                    </div>
+                </div>
+            </details>
+
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">👁️</div>
+                        <h3>Vision Protocol</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Reads and explains photos of documents or objects.</p>
+                </summary>
+                <div class="feature-details">
+                    <h4>How it works:</h4>
+                    <p>Tap the camera icon to take a photo of a menu, a letter, or a confusing dashboard light. LYLO will analyze the image and explain exactly what you're looking at.</p>
+                    <div class="step">
+                        <strong>Action:</strong> Tap the 📷 icon and upload a photo.
+                    </div>
+                </div>
+            </details>
+
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Memory Protocol</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Remembers important details so you don't repeat yourself.</p>
+                </summary>
+                <div class="feature-details">
+                    <h4>How it works:</h4>
+                    <p>LYLO learns your preferences and remembers past conversations. It gets smarter the more you use it.</p>
+                    <div class="step">
+                        <strong>Try saying:</strong> "Remember that I take my medication at 8 PM."
+                    </div>
+                </div>
+            </details>
+
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacy Protocol</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Your conversations are completely private.</p>
+                </summary>
+                <div class="feature-details">
+                    <h4>How it works:</h4>
+                    <p>We believe in privacy first. We can't read your conversations, and your data is never sold to advertisers.</p>
+                </div>
+            </details>
+
+        </div>
+    </section>
+    
+    <section class="privacy-section">
+        <div class="section-header">
+            <h2>Why We Don't Have Your Data</h2>
+            <p>Our "Zero-Retention" Promise to You</p>
+        </div>
+        <div class="privacy-grid">
+            <div class="privacy-item">
+                <h3>🚫 We Don't Sell Data</h3>
+                <p>We are a paid service, not an ad company. You are the customer, not the product. We have zero incentive to sell your information because we make money from subscriptions, not advertisers.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🤝</div>
-                <h3>Document Helper</h3>
-                <p>Confused by bills or forms? LYLO explains everything in simple words you can understand.</p>
+            <div class="privacy-item">
+                <h3>🗑️ We Shred It</h3>
+                <p>When you ask LYLO to "Analyze this text," we process it instantly and then discard the raw data. We don't hoard your messages. It's like a conversation in a soundproof room—once it's over, it's gone.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🧠</div>
-                <h3>Remembers You</h3>
-                <p>LYLO learns your preferences and remembers past conversations. It gets smarter the more you use it.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎤</div>
-                <h3>Voice Chat</h3>
-                <p>Don't like typing? Just talk! LYLO listens and responds naturally, like a helpful friend.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📷</div>
-                <h3>Photo Reading</h3>
-                <p>Take a photo of any document or label. LYLO reads it and explains what it means.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>100% Private</h3>
-                <p>Your conversations are completely private. We can't read them, and your data is never sold.</p>
+            <div class="privacy-item">
+                <h3>🔐 Bank-Level Encryption</h3>
+                <p>Any data that moves between your phone and our brain is encrypted with the same technology banks use. Even if someone intercepted it, they would only see gibberish.</p>
             </div>
         </div>
     </section>
     
-    <!-- Pricing Preview -->
     <section class="pricing">
         <div class="pricing-preview">
             <div class="section-header">
@@ -606,7 +802,6 @@
         </div>
     </section>
     
-    <!-- Scholarship Program -->
     <section class="scholarship">
         <div class="scholarship-content">
             <div class="scholarship-icon">🎓</div>
@@ -634,7 +829,6 @@
         </div>
     </section>
     
-    <!-- About Section -->
     <section class="about">
         <div class="about-content">
             <h2>Why We Built LYLO</h2>
@@ -646,8 +840,13 @@
         </div>
     </section>
     
-    <!-- Footer -->
     <footer class="footer">
+        <div class="legal-disclaimer">
+            <strong>IMPORTANT LEGAL DISCLAIMER</strong>
+            <p>LYLO is an Artificial Intelligence (AI) assistant. It is not a human lawyer, financial advisor, doctor, or emergency responder. Information provided by LYLO is for informational and educational purposes only and should not be considered professional advice.</p>
+            <p>While we strive for accuracy, AI can make mistakes ("hallucinations"). Always verify critical information (especially regarding health, finance, or legal matters) with a qualified human professional or official source. By using this service, you agree that LYLO and its creators are not liable for any actions you take based on the information provided. In an emergency, always call 911.</p>
+        </div>
+        
         <div class="footer-logo">
             <img src="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg" alt="LYLO">
             <span>LYLO</span>
