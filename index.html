@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYLO - Your Loyal AI Assistant | Coming Soon</title>
-    <meta name="description" content="LYLO - Your loyal AI assistant that protects you from scams, explains confusing documents, and remembers your conversations. Coming soon.">
+    <title>LYLO - Your Loyal AI Assistant</title>
+    <meta name="description" content="LYLO - Your loyal AI assistant that protects you from scams, explains confusing documents, and remembers your conversations.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script data-goatcounter="https://lylo-app.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -64,18 +67,24 @@
             font-weight: 800;
             letter-spacing: 2px;
         }
-        .nav-badge {
-            background: rgba(245, 158, 11, 0.2);
-            color: var(--accent);
-            padding: 6px 14px;
+        /* NEW: Launch Button in Nav */
+        .nav-btn {
+            background: var(--accent);
+            color: #000;
+            padding: 8px 16px;
             border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+        .nav-btn:hover {
+            transform: scale(1.05);
         }
         
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: 90vh; /* Made slightly shorter so Install guide peaks through */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -92,17 +101,6 @@
             border-radius: 28px;
             margin-bottom: 32px;
             box-shadow: 0 0 60px rgba(245, 158, 11, 0.3);
-        }
-        .hero-badge {
-            display: inline-block;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 24px;
         }
         .hero h1 {
             font-size: clamp(36px, 7vw, 56px);
@@ -130,15 +128,64 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        /* NEW: Big CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            margin-bottom: 40px;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
         
-        /* Email Signup */
+        /* NEW: Install Guide Section */
+        .install-guide {
+            background: var(--card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .install-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .install-step {
+            max-width: 300px;
+            text-align: left;
+            background: var(--bg);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        .install-step h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Email Signup (Moved down) */
         .signup-box {
             background: var(--card);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 32px;
             max-width: 450px;
-            margin: 0 auto 40px;
+            margin: 40px auto 40px;
         }
         .signup-box h3 {
             font-size: 18px;
@@ -188,24 +235,10 @@
             margin-top: 12px;
         }
         
-        /* Beta Access */
-        .beta-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .beta-link:hover {
-            text-decoration: underline;
-        }
-        
         /* Features Preview */
         .features {
             padding: 80px 24px;
-            background: var(--card);
-            border-top: 1px solid var(--border);
+            background: var(--bg);
         }
         .section-header {
             text-align: center;
@@ -230,7 +263,7 @@
         
         /* Dropdown Styling */
         details.feature-card {
-            background: var(--bg);
+            background: var(--card);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 20px;
@@ -613,7 +646,7 @@
                 <img src="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg" alt="LYLO">
                 <span>LYLO</span>
             </a>
-            <div class="nav-badge">🚀 Coming Soon</div>
+            <a href="https://collective-synergy-squad.onrender.com/" class="nav-btn">Launch App</a>
         </div>
     </nav>
     
@@ -621,35 +654,54 @@
         <div class="hero-content">
             <img src="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg" alt="LYLO" class="hero-logo">
             
-            <div class="hero-badge">🚀 Launching Soon</div>
-            
             <h1>Meet <span class="highlight">LYLO</span></h1>
-            <div class="tagline">Your Loyal AI Assistant</div>
-            <p>Helping everyone stay safe, connected, and smart. LYLO protects you from scams, explains confusing documents, and remembers your conversations.</p>
+            <div class="tagline">The Universal AI Assistant</div>
+            <p>Simple enough for beginners. Powerful enough for experts. Helping everyone stay safe, connected, and smart.</p>
+            
+            <a href="https://collective-synergy-squad.onrender.com/" class="cta-button">
+                🚀 Launch App Now
+            </a>
+            <p style="margin-top: 16px; font-size: 14px; color: #666;">Works on iPhone, Android, and Desktop</p>
             
             <div class="signup-box">
-                <h3>Get Early Access</h3>
-                <p>Be the first to know when we launch. No spam, just updates.</p>
+                <h3>Get Updates & News</h3>
+                <p>Join our newsletter for safety tips and new feature alerts.</p>
                 <form class="signup-form" id="waitlistForm" action="https://formspree.io/f/mvzaobwn" method="POST">
                     <input type="email" name="email" placeholder="Enter your email" required id="emailInput">
-                    <button type="submit">Join Waitlist</button>
+                    <button type="submit">Join</button>
                 </form>
-                <div class="signup-note">🔒 We respect your privacy. Unsubscribe anytime.</div>
                 <div class="success-message" id="successMessage">
-                    ✅ You're on the list! We'll notify you when LYLO launches.
+                    ✅ You're on the list!
                 </div>
             </div>
-            
-            <a href="https://collective-synergy-squad.onrender.com/login" class="beta-link">
-                Already a beta tester? Sign in here →
-            </a>
+        </div>
+    </section>
+    
+    <section class="install-guide">
+        <div class="section-header">
+            <h2>📲 How to Install</h2>
+            <p>No App Store required. Get the full app experience in 2 clicks.</p>
+        </div>
+        <div class="install-grid">
+            <div class="install-step">
+                <h3>🍎 For iPhone</h3>
+                <p>1. Tap <strong>Launch App Now</strong> above.</p>
+                <p>2. Tap the <strong>Share</strong> button (box with arrow).</p>
+                <p>3. Scroll down and tap <strong>"Add to Home Screen"</strong>.</p>
+            </div>
+            <div class="install-step">
+                <h3>🤖 For Android</h3>
+                <p>1. Tap <strong>Launch App Now</strong> above.</p>
+                <p>2. Tap the <strong>3 Dots</strong> menu.</p>
+                <p>3. Tap <strong>"Install App"</strong> or <strong>"Add to Home Screen"</strong>.</p>
+            </div>
         </div>
     </section>
     
     <section class="features">
         <div class="section-header">
             <h2>Active Protocols</h2>
-            <p>Tap a feature below to learn how to activate it.</p>
+            <p>Tap a feature to see the new simplified controls.</p>
         </div>
         <div class="features-grid">
             
@@ -663,12 +715,10 @@
                     <p>Detects scams in texts and emails instantly.</p>
                 </summary>
                 <div class="feature-details">
-                    <h4>How it works:</h4>
-                    <p>Copy any suspicious message and paste it into the chat. Ask "Is this a scam?" LYLO will analyze the language, links, and sender to warn you of danger.</p>
+                    <h4>How to use:</h4>
+                    <p>Paste a suspicious text message into the chat.</p>
                     <div class="step">
-                        <strong>Simple Activation:</strong><br>
-                        1. Paste the suspicious text or email.<br>
-                        2. Type or say: <strong>"Guardian"</strong>
+                        Just type or say: <strong>"Is this safe?"</strong>
                     </div>
                 </div>
             </details>
@@ -680,16 +730,14 @@
                         <h3>Honeybot Protocol</h3>
                         <span class="expand-icon">+</span>
                     </div>
-                    <p>Wastes scammers' time so they leave you alone.</p>
+                    <p>Wastes scammers' time with funny personas.</p>
                 </summary>
                 <div class="feature-details">
-                    <h4>How it works:</h4>
-                    <p>If a scam is detected, LYLO can generate a "Honeybot Reply." This reply is designed to be confusing and time-wasting, frustrating the scammer into giving up.</p>
+                    <h4>How to use:</h4>
+                    <p>When you find a scammer, let LYLO handle them.</p>
                     <div class="step">
-                        <strong>Simple Activation:</strong><br>
-                        1. Paste the scam message.<br>
-                        2. Type or say: <strong>"Honeybot"</strong><br>
-                        3. I will write a confused "Grandma Betty" reply for you.
+                        Just type or say: <strong>"Honeybot"</strong><br>
+                        (Or say "Honeybot Male" / "Honeybot Female" to choose!)
                     </div>
                 </div>
             </details>
@@ -701,15 +749,13 @@
                         <h3>Advocate Protocol</h3>
                         <span class="expand-icon">+</span>
                     </div>
-                    <p>Handles difficult negotiations and formal letters.</p>
+                    <p>Handles negotiations and formal letters.</p>
                 </summary>
                 <div class="feature-details">
-                    <h4>How it works:</h4>
-                    <p>Need to lower a bill or file a complaint? LYLO writes professional, firm letters for you. Just tell it the situation, and it drafts the perfect response.</p>
+                    <h4>How to use:</h4>
+                    <p>Need to lower a bill? Tell LYLO the problem.</p>
                     <div class="step">
-                        <strong>Simple Activation:</strong><br>
-                        1. Explain the problem (e.g. "My bill is too high").<br>
-                        2. Type or say: <strong>"Advocate"</strong>
+                        Just type or say: <strong>"Advocate"</strong>
                     </div>
                 </div>
             </details>
@@ -724,13 +770,10 @@
                     <p>Reads and explains photos of documents or objects.</p>
                 </summary>
                 <div class="feature-details">
-                    <h4>How it works:</h4>
-                    <p>Tap the camera icon to take a photo of a menu, a letter, or a confusing dashboard light. LYLO will analyze the image and explain exactly what you're looking at.</p>
+                    <h4>How to use:</h4>
+                    <p>Tap the camera icon to take a photo of a menu, a letter, or a confusing dashboard light.</p>
                     <div class="step">
-                        <strong>Simple Activation:</strong><br>
-                        1. Tap the 📷 Camera icon.<br>
-                        2. Take a photo.<br>
-                        3. Type or say: <strong>"Vision"</strong> or "Read this".
+                        Just type or say: <strong>"Vision"</strong> or "Read this".
                     </div>
                 </div>
             </details>
@@ -877,13 +920,8 @@
     </footer>
     
     <script>
-        // Optional: Show success message after form submit
-        // Formspree will handle the actual submission and redirect
-        // If you want to stay on page, you can use AJAX instead
-        
         // Check if redirected back with success
         if (window.location.search.includes('submitted=true')) {
-            // Show appropriate success message based on which form
             var successMsgs = document.querySelectorAll('.success-message');
             successMsgs.forEach(function(msg) {
                 msg.style.display = 'block';
