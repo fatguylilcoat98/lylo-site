@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYLO - Your Loyal AI Assistant</title>
-    <meta name="description" content="LYLO - Your loyal AI assistant that protects you from scams, explains confusing documents, and remembers your conversations.">
+    <title>LYLO - The Good Neighbor Guard</title>
+    <meta name="description" content="LYLO - The AI that protects you from scams, writes your negotiations, and calculates the true cost of your time.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
@@ -29,6 +29,25 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+        }
+
+        /* Video Wrapper */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-top: 15px;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
         
         /* Navigation */
@@ -67,7 +86,6 @@
             font-weight: 800;
             letter-spacing: 2px;
         }
-        /* Launch Button in Nav */
         .nav-btn {
             background: var(--accent);
             color: #000;
@@ -396,6 +414,9 @@
             border-radius: 16px;
             padding: 28px 36px;
             min-width: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .price-card.featured {
             border-color: var(--accent);
@@ -432,6 +453,26 @@
             font-size: 12px;
             color: var(--success);
             margin-top: 4px;
+        }
+        .price-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .price-card.featured .price-btn {
+            background: var(--accent);
+            color: #000;
+        }
+        .price-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
         
         /* Scholarship Section */
@@ -537,6 +578,45 @@
             margin-top: 16px;
         }
         
+        /* Footer Styles */
+        .footer {
+            padding: 80px 24px;
+            background: #050505;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .footer-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+        .footer-logo span {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+        }
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
         /* Mobile */
         @media (max-width: 600px) {
             .hero h1 {
@@ -613,7 +693,7 @@
     <section class="features">
         <div class="section-header">
             <h2>Active Protocols</h2>
-            <p>Tap a feature to see the new simplified controls.</p>
+            <p>Tap a feature to watch the demonstration videos.</p>
         </div>
         <div class="features-grid">
             
@@ -621,12 +701,17 @@
                 <summary>
                     <div class="feature-header">
                         <div class="feature-icon">🛡️</div>
-                        <h3>Guardian Protocol</h3>
+                        <h3>Scam Check</h3>
                         <span class="expand-icon">+</span>
                     </div>
                     <p>Detects scams in texts and emails instantly.</p>
                 </summary>
                 <div class="feature-details">
+                    <div class="video-wrapper">
+                        <video controls poster="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg">
+                            <source src="scam-check-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h4>How to use:</h4>
                     <p>Paste a suspicious text message into the chat.</p>
                     <div class="step">
@@ -639,12 +724,17 @@
                 <summary>
                     <div class="feature-header">
                         <div class="feature-icon">🍯</div>
-                        <h3>Honeybot Protocol</h3>
+                        <h3>Honeybot</h3>
                         <span class="expand-icon">+</span>
                     </div>
                     <p>Wastes scammers' time with funny personas.</p>
                 </summary>
                 <div class="feature-details">
+                    <div class="video-wrapper">
+                        <video controls poster="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg">
+                            <source src="honeybot-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h4>How to use:</h4>
                     <p>When you find a scammer, let LYLO handle them.</p>
                     <div class="step">
@@ -658,16 +748,21 @@
                 <summary>
                     <div class="feature-header">
                         <div class="feature-icon">⚖️</div>
-                        <h3>Advocate Protocol</h3>
+                        <h3>Scripts</h3>
                         <span class="expand-icon">+</span>
                     </div>
                     <p>Handles negotiations and formal letters.</p>
                 </summary>
                 <div class="feature-details">
+                    <div class="video-wrapper">
+                        <video controls poster="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg">
+                            <source src="council-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
                     <h4>How to use:</h4>
                     <p>Need to lower a bill? Tell LYLO the problem.</p>
                     <div class="step">
-                        Just type or say: <strong>"Advocate"</strong>
+                        Just type or say: <strong>"Advocate"</strong> or "Write a script"
                     </div>
                 </div>
             </details>
@@ -675,17 +770,22 @@
             <details class="feature-card">
                 <summary>
                     <div class="feature-header">
-                        <div class="feature-icon">👁️</div>
-                        <h3>Vision Protocol</h3>
+                        <div class="feature-icon">💥</div>
+                        <h3>Life-Math</h3>
                         <span class="expand-icon">+</span>
                     </div>
-                    <p>Reads and explains photos of documents or objects.</p>
+                    <p>Converts dollars into hours of your life.</p>
                 </summary>
                 <div class="feature-details">
-                    <h4>How to use:</h4>
-                    <p>Tap the camera icon to take a photo of a menu, a letter, or a confusing dashboard light.</p>
+                    <div class="video-wrapper">
+                        <video controls poster="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg">
+                            <source src="life-math-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <h4>How it works:</h4>
+                    <p>Enter your hourly wage and a purchase price. LYLO tells you if it's worth the time.</p>
                     <div class="step">
-                        Just type or say: <strong>"Vision"</strong> or "Read this".
+                        Just type: <strong>"Should I buy this $150 drill?"</strong>
                     </div>
                 </div>
             </details>
@@ -693,34 +793,64 @@
             <details class="feature-card">
                 <summary>
                     <div class="feature-header">
-                        <div class="feature-icon">🧠</div>
-                        <h3>Memory Protocol</h3>
+                        <div class="feature-icon">🧪</div>
+                        <h3>Lies & Logic</h3>
                         <span class="expand-icon">+</span>
                     </div>
-                    <p>Remembers important details so you don't repeat yourself.</p>
+                    <p>Detects hidden intent and "Hedge Words" in messages.</p>
+                </summary>
+                <div class="feature-details">
+                    <div class="video-wrapper">
+                        <video controls poster="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg">
+                            <source src="lies-logic-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <h4>How it works:</h4>
+                    <p>The "Truth Serum" highlights words meant to stall or deceive you.</p>
+                    <div class="step">
+                        Just type: <strong>"Is my contractor lying?"</strong>
+                    </div>
+                </div>
+            </details>
+
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">🚪</div>
+                        <h3>Bot Bypass</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Secret keypresses and magic words to talk to a human.</p>
+                </summary>
+                <div class="feature-details">
+                    <div class="video-wrapper">
+                        <video controls poster="https://i.ibb.co/fWZ5t7n/image-9r-U-m-Js-1769323761808-raw.jpg">
+                            <source src="bot-bypass-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <h4>How it works:</h4>
+                    <p>Never get stuck in a phone menu again. LYLO gives you the codes.</p>
+                    <div class="step">
+                        Just type: <strong>"Talk to a person at Comcast"</strong>
+                    </div>
+                </div>
+            </details>
+            
+            <details class="feature-card">
+                <summary>
+                    <div class="feature-header">
+                        <div class="feature-icon">🗣️</div>
+                        <h3>Translator</h3>
+                        <span class="expand-icon">+</span>
+                    </div>
+                    <p>Real-time conversation translation.</p>
                 </summary>
                 <div class="feature-details">
                     <h4>How it works:</h4>
-                    <p>LYLO learns your preferences and remembers past conversations. It gets smarter the more you use it.</p>
+                    <p>LYLO listens and translates between languages in real-time.</p>
                     <div class="step">
-                        <strong>Automatic:</strong><br>
-                        Just talk naturally. I automatically remember important details like names, medications, and preferences.
+                        Just type: <strong>"Translator"</strong>
                     </div>
-                </div>
-            </details>
-
-            <details class="feature-card">
-                <summary>
-                    <div class="feature-header">
-                        <div class="feature-icon">🔒</div>
-                        <h3>Privacy Protocol</h3>
-                        <span class="expand-icon">+</span>
-                    </div>
-                    <p>Your conversations are completely private.</p>
-                </summary>
-                <div class="feature-details">
-                    <h4>How it works:</h4>
-                    <p>We believe in privacy first. We can't read your conversations, and your data is never sold to advertisers.</p>
                 </div>
             </details>
 
@@ -758,16 +888,34 @@
                 <div class="price-card">
                     <h4>Free</h4>
                     <div class="price">$0</div>
+                    <ul style="list-style:none; margin:20px 0; font-size:14px; color:var(--muted); line-height:2;">
+                        <li>• Ad-Supported</li>
+                        <li>• 10 Questions/Day</li>
+                        <li>• Basic Models</li>
+                    </ul>
+                    <a href="https://collective-synergy-squad.onrender.com/" class="price-btn">Start Free</a>
                 </div>
                 <div class="price-card featured">
                     <h4>Pro</h4>
-                    <div class="price">$6.99<span>/mo</span></div>
-                    <div class="annual">or $59/year</div>
+                    <div class="price">$4.99<span>/mo</span></div>
+                    <div class="annual">or $49/year (Save $10)</div>
+                    <ul style="list-style:none; margin:20px 0; font-size:14px; color:var(--text); line-height:2;">
+                        <li>• 100 Questions/Day</li>
+                        <li>• 15 Min Honeybot</li>
+                        <li>• No Ads</li>
+                    </ul>
+                    <a href="https://collective-synergy-squad.onrender.com/upgrade" class="price-btn">Get Pro</a>
                 </div>
                 <div class="price-card">
                     <h4>Elite</h4>
-                    <div class="price">$12.99<span>/mo</span></div>
-                    <div class="annual">or $99/year</div>
+                    <div class="price">$9.99<span>/mo</span></div>
+                    <div class="annual">or $99/year (Save $20)</div>
+                    <ul style="list-style:none; margin:20px 0; font-size:14px; color:var(--muted); line-height:2;">
+                        <li>• 500 Questions/Day</li>
+                        <li>• 45 Min Honeybot</li>
+                        <li>• Priority Support</li>
+                    </ul>
+                    <a href="https://collective-synergy-squad.onrender.com/upgrade" class="price-btn">Get Elite</a>
                 </div>
             </div>
         </div>
@@ -804,7 +952,7 @@
         <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center;">
             
             <div style="flex: 1; min-width: 300px; max-width: 400px;">
-                <img src="chris.jpg" alt="Chris Hughes" style="width: 100%; border-radius: 24px; border: 2px solid var(--accent); box-shadow: 0 0 40px rgba(245, 158, 11, 0.15); object-fit: cover;">
+                <img src="https://i.ibb.co/Qvw8RZt5/chris.jpg" alt="Chris Hughes" style="width: 100%; border-radius: 24px; border: 2px solid var(--accent); box-shadow: 0 0 40px rgba(245, 158, 11, 0.15); object-fit: cover;">
             </div>
             
             <div style="flex: 1.5; min-width: 300px; text-align: left;">
